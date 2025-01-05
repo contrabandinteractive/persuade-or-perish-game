@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+</head>
+<body>
+    <script>
+        function getParameterByName(name, url = window.location.href) {
+        const urlParams = new URLSearchParams(new URL(url).search);
+        return urlParams.get(name);
+        }
+
+        // Example usage:
+        const chatId = getParameterByName('chatId'); 
+        console.log(chatId); 
+
+        window.botpress.on("webchat:ready", (conversationId) => {
+            //botpress.open();
+            console.log('ready')
+            window.botpress.open();
+            
+        });
+
+        window.botpress.init({
+        "botId": "a5f11395-d70e-470f-9b97-20ffc999148b",
+        "stylesheet": "https://webchat-styler-css.botpress.app/prod/code/164bc899-a96d-490e-a3b9-d5b875abddb9/v74051/style.css",
+        "configuration": {
+            "botName": "Persuade or Perish",
+            "botAvatar": "https://files.bpcontent.cloud/2024/12/30/00/20241230004734-GPR72A2V.jpeg",
+            "botDescription": "AI Game - Can you save humanity?",
+            "website": {},
+            "email": {},
+            "phone": {},
+            "termsOfService": {},
+            "privacyPolicy": {},
+            "color": "#000000",
+            "variant": "solid",
+            "themeMode": "light",
+            "fontFamily": "inter",
+            "radius": 4,
+            "additionalStylesheetUrl": "https://files.bpcontent.cloud/2024/12/30/00/20241230003642-N847JH1Z.css"
+        },
+        "clientId": "a3c98d66-c678-4da4-9671-60b08aae422e",
+        "user": {
+                "data": {
+                    "chatId": chatId
+                }
+            }
+        });
+
+        setTimeout(() => {
+            window.botpress.open();
+        }, 2000);
+
+        window.addEventListener("message", (event) => {
+            console.log("Message received in iframe:", event.data);
+
+            if (typeof event.data === "string" && event.data.startsWith("window.botpress.sendMessage")) {
+                const message = event.data.match(/sendMessage\('(.*)'\)/)?.[1];
+                if (message) {
+                    console.log("Sending message to botpress:", message);
+                    window.botpress.sendMessage(message);
+                }
+            }
+        });
+       
+    </script>
+</body>
+</html>

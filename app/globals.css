@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body {
+  color: var(--foreground);
+  background: #000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.chatiframe {
+  width: 100%;
+  max-width:540px;
+  border:none;
+  height:637px;
+  border-radius: 20px;
+}
