@@ -25,10 +25,15 @@ Use the chat window to interact with the AI (type your arguments here). Pay atte
 The game leverages a wide array of AWS services including:
 
 **Amazon Q Developer:** Amazon Q quickly became one of the most valuable tools in my workflow, using it to generate frontend code and API routes. I used the VS Code extension to help create code and make fixes along the way. The best part is that it is fully integrated in VS Code, so I didn't have to keep switching back and forth to my browser window. _**Using Amazon Q Developer sped up development time by about 80%.**_
+
 **AWS Amplify:** For hosting the Next.js project (front end and API routes)
+
 **AWS Bedrock:** The Nova Lite model on Bedrock is used to evaluate the player's arguments, which then assigns a score.
+
 **AWS DynamoDB:** A DynamoDB table is used to keep track of the persuasion meter (player's score)
+
 **S3:** storing assets (game music)
+
 
 ## Challenges we ran into
 
